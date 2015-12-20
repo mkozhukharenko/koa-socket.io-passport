@@ -35,7 +35,6 @@ jQuery(document).ready(function($) {
 		removeTypingMsg(username);
 	})
 	.on('connect', function() {
-		console.log('form', form);
 		printStatus("соединение установлено", "success");
 		form.on('submit', sendMessage);
 		input.on('input', function() {
@@ -48,6 +47,7 @@ jQuery(document).ready(function($) {
 		setTimeout(reconnect, 500);
 	})
 	.on('logout', function() {
+		console.log('logout!')
 		location.href = "/";
 	})
 	.on('reconnect_failed', function () {

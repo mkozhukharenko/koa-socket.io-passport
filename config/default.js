@@ -24,7 +24,7 @@ var base = {
   },
   template: {
     // template.root uses config.root
-    //  // /Users/nikolay/Projects/koa-socketIO-passport/templates
+    // /Users/nikolay/Projects/koa-socketIO-passport/templates
     root: defer(function(cfg) {
       return path.join(cfg.root, 'templates');
     })

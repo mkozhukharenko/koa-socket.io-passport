@@ -33,14 +33,13 @@ module.exports = function(socket, next) {
     socket.session = session;
 
     session.socketIds = session.socketIds ? session.socketIds.concat(socket.id) : [socket.id];
+    console.log('session.socketIds', session.socketIds);
 
 		yield* sessionStore.set(sid, session);
 
     socket.on('disconnect', function() {
-      console.log('socket disconnect');
       co(function* clearSocketId() {
         var session = yield* sessionStore.get(sid, true);
-        console.log('sesstion on disconnect', session);
         if (session) {
           session.socketIds.splice(session.socketIds.indexOf(socket.id), 1);
           yield* sessionStore.set(sid, session);
@@ -50,11 +49,8 @@ module.exports = function(socket, next) {
       });
     });
 
-    
-
 
 	}).then(function() {
-    console.log('next');
       next();
     }).catch(function(err) {
       console.log(err);

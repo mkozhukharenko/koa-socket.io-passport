@@ -30,17 +30,7 @@ gulp.task('nodemon', function() {
     env: {
       'NODE_ENV': 'development'
     }
-  })
-    .on('restart', function () {
-      console.log('restarted!');
-    })
-    .on('error', function(e) {
-      console.log('error:', e);
-    })
-    .once('end', function () {
-      console.log('end');
-      process.exit();
-    });
+  });
 });
 
 

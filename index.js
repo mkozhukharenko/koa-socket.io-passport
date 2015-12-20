@@ -2,9 +2,11 @@
 if (process.env.TRACE) {
   require('./libs/trace');
 }
+
 var http = require('http');
 var koa = require('koa');
 var config = require('config');
+var mongoose = require('./libs/mongoose');
 var app = koa();
 
 // ------------ keys -----------------------

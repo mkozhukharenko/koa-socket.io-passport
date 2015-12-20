@@ -19,16 +19,12 @@ module.exports.post = function* (next) {
 	var _this = this;
   yield* passport.authenticate('local', function*(err, user, info) {
   	try {
-	  	console.log(err, user, info);
 	    if (err) throw err;
 	    if (user === false) {
-	    	console.log('user === false');
 	      _this.status = 401;
 	    } else { 
-	    	console.log('this', _this);
 	      yield _this.login(user);
 	      _this.body = { user: user };
-	      console.log('user', _this.user);
 	    }
   	} catch (e) {
   		console.log(e);

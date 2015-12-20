@@ -6,12 +6,16 @@ module.exports = function* (next) {
 	var ctx = this;
 
   /**
-   * return user from context
+   * return user and flash message from a context
    * we can't just assign because user will be deserialized by passport later
    */
   this.locals = {
     get user() {
       return ctx.req.user; // passport sets this
+    },
+
+    get flash() {
+      return ctx.flash;
     }
   };
 
@@ -35,8 +39,6 @@ module.exports = function* (next) {
 
     return jade.renderFile(templatePathResolved, localsFull);
   };
-
-	this.renderFile = jade.renderFile;
 
 	yield* next;
 };

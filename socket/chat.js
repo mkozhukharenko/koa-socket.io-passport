@@ -4,7 +4,7 @@ const Message = require('../models/message');
 const co = require('co');
 
 module.exports = function (socket) {
-	console.log('---- connections to socket ', socket.user);	
+	console.log('---- connections to socket ');	
 
 	var userName = (socket.user.name === '') ? 'No name' : socket.user.name;
 	socket.broadcast.emit('join', userName);
@@ -35,7 +35,7 @@ module.exports = function (socket) {
 	});
 	
 	socket.on('disconnect', function() {
-		socket.broadcast.emit('leave', socket.handshake.user);
+		socket.broadcast.emit('leave', userName);
 	});
 
 	return socket;

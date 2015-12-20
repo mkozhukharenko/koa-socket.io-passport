@@ -7,10 +7,13 @@ const Message = require('../models/message');
  * [GET] /chat 
  */
 module.exports.get = function* (next) {
+
 	let allMessages = yield Message.find({}).lean();
 	
 	this.body = this.render('chat', {
 		allmessages: allMessages,
 		authorized: this.isAuthenticated()
 	});	
+
+
 };

@@ -1,18 +1,20 @@
 'use strict';
 
-const User = require('../models/user');
-// const cookie = require("cookie");
-// const config = require('config');
-// const io = require('../socket');
-
+var socket = require('../socket');
 /**
  * [POST] /logout
- * excecute logout (passport don this )
+ * excecute logout (passport do this )
  */
 module.exports.post = function* (next) {
+
+  if (this.session.socketIds) {
+    this.session.socketIds.forEach(function(socketId) {
+      console.log("emit to", socketId);
+      socket.emitter.to(socketId).emit('logout');
+    });
+  }
+
 	this.logout();
-	// let sid = this.cookies.get(config.key);
-	this.session = null;
 	this.status = 204;
 };
 

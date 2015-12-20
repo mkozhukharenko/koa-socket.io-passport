@@ -8,7 +8,7 @@ var secured = function *(next) {
     yield next;
   } else {
   	this.redirect('/not-auth'); 
-  	this.body = this.renderFile('./templates/notAuth.jade');
+  	this.body = this.render('notAuth');
   	// this.status = 401;
   }
 };
@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
 	router.get('/register', require('./api/register').get);
 	router.post('/register', require('./api/register').post);
 	router.get('/not-auth', function* (next) {
-		this.body = this.renderFile('./templates/notAuth.jade');
+		this.body = this.render('notAuth');
 	});
 
 	router.get('/auth/facebook', require('./api/login').facebook);
@@ -42,4 +42,4 @@ module.exports = function (app, passport) {
 	app
 	  .use(router.routes())
 	  .use(router.allowedMethods());
-}
+};
