@@ -1,0 +1,29 @@
+extends ./index.jade
+
+block scripts
+	script(src='js/login.js')
+block content 
+	div.container
+		h3 Login
+		form.form-horizontal(role="form" id="login-form" name="login-form")
+			div.form-group
+				label.control-label.col-sm-2(for="email") Email:
+				div.col-sm-10
+					input.form-control(type="email" name="email" id="email" placeholder="Enter email")
+			div.form-group
+				label.control-label.col-sm-2(for="pwd") Password:
+				div.col-sm-10
+					input.form-control(type="password" name="password" id="pwd" placeholder="Enter password")
+					a(href="/register") dont have account yet? Register!
+			div.form-group
+				div.col-sm-10.col-sm-offset-2
+					button.btn.btn-default(type="submit" id="submit" data-loading-text="Отправляю..." )  Login
+			div.form-group
+				div.col-sm-4.col-sm-offset-2
+					a.btn.btn-primary.btn-block(href='/auth/facebook') Sign in with Facebook
+				div.col-sm-4.col-sm-offset-1
+					a.btn.btn-danger.btn-block(href='/auth/google') Sign in with Google
+			div.alert.alert-danger.hide email or password are incorrect!
+		
+			
+

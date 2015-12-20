@@ -1,0 +1,31 @@
+extends ./index.jade
+
+block scripts
+	script(src='js/chat.js')
+	link(rel='stylesheet', href='css/chat.css')
+block content 
+	div.container
+		div.row
+			div.col-md-10
+				div.panel.panel-primary
+					div.panel-heading
+						span.glyphicon.glyphicon-comment Chat
+					div.panel-body
+						ul.chat
+							each message in allmessages
+								li.left.clearfix 
+									span.chat-img.pull-left
+										img(src="images/you.png" alt="User Avatar" class="img-circle")
+									div.chat-body.clearfix
+										div.header
+											strong.primary-font= message.user.name
+											small.pull-right.text-muted
+												span.glyphicon.glyphicon-time= message.created
+										p= message.text
+						div.typing_container
+					div.panel-footer
+						form.input-group(role="form" id="chat-form" name="chat-form")
+							input.form-control.input-sm(type="text" name="messange" id="btn-input" placeholder="Type your message here..." )
+							span.input-group-btn
+								button.btn.btn-warning.btn-sm(type="submit" id="btn-chat") Send
+			

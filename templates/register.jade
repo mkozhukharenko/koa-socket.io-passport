@@ -1,0 +1,24 @@
+extends ./index.jade
+
+block scripts
+	script(src='js/register.js')
+block content 
+	div.container
+		h3 Register form
+		form.form-horizontal(role="form" name="RegisterForm" id="RegisterForm")
+			div.form-group
+				label.control-label.col-sm-2(for="name") Name:
+				div.col-sm-10
+					input.form-control(type="text" name="name" id="name" placeholder="Enter name")
+			div.form-group
+				label.control-label.col-sm-2(for="email") Email:
+				div.col-sm-10
+					input.form-control(type="email" name="email" id="email" placeholder="Enter email")
+			div.form-group
+				label.control-label.col-sm-2(for="pwd") Password:
+				div.col-sm-10
+					input.form-control(type="password" name="password" id="pwd" placeholder="Enter password")
+			div.form-group
+				div.col-sm-10.col-sm-offset-2
+					button.btn.btn-default(type="submit" id="s,b") Register     
+			div.alert.alert-danger.hide smth wrong!
