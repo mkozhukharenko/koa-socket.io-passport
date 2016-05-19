@@ -9,7 +9,6 @@ var base = {
   env: env,
   sessprefix: 'koa:sess:',
   key: 'mysecret',
-
   cookie: {
       path: "/",
       httpOnly: true,
@@ -18,7 +17,7 @@ var base = {
     },
   crypto: {
     hash: {
-      length:     128,
+      length: 128,
       iterations: process.env.NODE_ENV == 'production' ? 100 : 10
     }
   },

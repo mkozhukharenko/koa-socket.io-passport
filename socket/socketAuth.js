@@ -53,7 +53,7 @@ module.exports = function(socket, next) {
 	}).then(function() {
       next();
     }).catch(function(err) {
-      console.log(err);
+      console.error(err);
       next(err);
     });
 };

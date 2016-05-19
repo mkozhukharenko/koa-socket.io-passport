@@ -22,19 +22,14 @@ module.exports = function* (next) {
   /**
    * [render description]
    * @param  {[string]} templatePath  [e.g. 'index']
-   * @param  {[obj} locals            [{data: 'some data'}]
+   * @param  {[obj} data [{data: 'some data'}]
    * @return {[fn]}                   
    */
-  this.render = function(templatePath, locals) {
-    locals = locals || {};
-    var localsFull = Object.create(this.locals);
+  this.render = function(templatePath, data) {
+    data = data || {};
 
-    for(var key in locals) {
-      localsFull[key] = locals[key];
-    }
-    // console.log(config.template.root);
+    var localsFull = Object.assign(Object.create(this.locals), data);
 
-    // var templatePathResolved = path.join(config.root, 'templates', templatePath + '.jade');
     var templatePathResolved = path.join(config.template.root, templatePath + '.jade');
 
     return jade.renderFile(templatePathResolved, localsFull);
